@@ -1,0 +1,1 @@
+{"mappings":"AAAA;;;;AAGA","sources":["src/style.css"],"sourcesContent":["ul {\r\n  list-style: none;\r\n}\r\n.result {\r\n  display: flex;\r\n  gap: 50px;\r\n}\r\n"],"names":[],"version":3,"file":"goit-js-hw-12-countries.2cdaf7bc.css.map","sourceRoot":"/__parcel_source_root/"}
