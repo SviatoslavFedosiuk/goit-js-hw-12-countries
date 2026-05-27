@@ -752,8 +752,8 @@ exports.export = function(dest, destName, get) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _lodashDebounce = require("lodash.debounce");
 var _lodashDebounceDefault = parcelHelpers.interopDefault(_lodashDebounce);
-var _fetchCountries = require("./fetchCountries");
-var _fetchCountriesDefault = parcelHelpers.interopDefault(_fetchCountries);
+var _fetchCountriesJs = require("./fetchCountries.js");
+var _fetchCountriesJsDefault = parcelHelpers.interopDefault(_fetchCountriesJs);
 var _pnotifyJs = require("@pnotify/core/dist/PNotify.js");
 var _pnotifyMobileJs = require("@pnotify/mobile/dist/PNotifyMobile.js");
 var _brightThemeCss = require("@pnotify/core/dist/BrightTheme.css");
@@ -765,8 +765,13 @@ let search = "";
 (0, _pnotifyJs.defaultModules).set(_pnotifyMobileJs, {});
 inputRef.addEventListener("input", (0, _lodashDebounceDefault.default)((e)=>{
     search = e.target.value;
-    (0, _fetchCountriesDefault.default)(search).then((res)=>{
+    (0, _fetchCountriesJsDefault.default)(search).then((res)=>{
         console.log(res);
+        if (search.length === 0) {
+            listRef.textContent = "";
+            divRef.textContent = "";
+        }
+        if (listRef.textContent !== 0) divRef.textContent = "";
         if (res.length > 10) (0, _pnotifyJs.error)({
             text: "Too many matches found. Please enter more specific query!",
             delay: 2000
@@ -789,7 +794,7 @@ inputRef.addEventListener("input", (0, _lodashDebounceDefault.default)((e)=>{
     });
 }, 500));
 
-},{"lodash.debounce":"irvaP","@pnotify/core/dist/PNotify.js":"fay4s","@pnotify/mobile/dist/PNotifyMobile.js":"5RXYV","@pnotify/core/dist/BrightTheme.css":"grIyt","@pnotify/core/dist/PNotify.css":"c4y47","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./fetchCountries":"LnPoi"}],"irvaP":[function(require,module,exports,__globalThis) {
+},{"lodash.debounce":"irvaP","@pnotify/core/dist/PNotify.js":"fay4s","@pnotify/mobile/dist/PNotifyMobile.js":"5RXYV","@pnotify/core/dist/BrightTheme.css":"grIyt","@pnotify/core/dist/PNotify.css":"c4y47","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./fetchCountries.js":"LnPoi"}],"irvaP":[function(require,module,exports,__globalThis) {
 /**
  * lodash (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
