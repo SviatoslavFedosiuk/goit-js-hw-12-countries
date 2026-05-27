@@ -3,7 +3,7 @@ const inputRef = document.querySelector(".input");
 const listRef = document.querySelector(".list");
 const divRef = document.querySelector(".result");
 let search = "";
-import fetchCountries from "./fetchCountries";
+import fetchCountries from "./fetchCountries.js";
 import {
   alert,
   notice,
@@ -23,6 +23,13 @@ inputRef.addEventListener(
     fetchCountries(search).then((res) => {
       console.log(res);
 
+      if (search.length === 0) {
+        listRef.textContent = "";
+        divRef.textContent = "";
+      }
+      if (listRef.textContent !== 0) {
+        divRef.textContent = ""
+      }
       if (res.length > 10) {
         error({
           text: "Too many matches found. Please enter more specific query!",
